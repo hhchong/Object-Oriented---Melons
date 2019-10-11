@@ -13,7 +13,7 @@ class AbstractMelonOrder():
         """Calculate price, including tax."""
 
         base_price = 5
-        
+
         if self.species == "Christmas":
             base_price = base_price * 1.5 
 
@@ -47,6 +47,7 @@ class InternationalMelonOrder(AbstractMelonOrder):
 
     def __init__(self, species, qty, country_code):
         super().__init__(species, qty, "international")
+
         self.country_code = country_code
 
 
@@ -57,3 +58,28 @@ class InternationalMelonOrder(AbstractMelonOrder):
         """Return the country code."""
 
         return self.country_code
+
+class GovernmentMelonOrder(AbstractMelonOrder):
+
+    def __init__(self, species, qty):
+        super().__init__(species, qty, "government")
+
+        self.passed_inspection = False
+
+
+    tax = 0 
+
+
+    def mark_inspection(self, passed):
+
+        
+        self.passed_inspection = passed
+
+
+
+
+
+
+
+
+
